@@ -25,10 +25,10 @@ public function BuildReport()
                $startTimeMillisec = DateTimeImmutable::createFromFormat('H:i:s.u', $driverStartTime[1]);
                 $endTimeMillisec = DateTimeImmutable::createFromFormat('H:i:s.u', $driverEndTime[1]);
                 $timeDiff = $endTimeMillisec - $startTimeMillisec;
-            }
-        }
+             }
+             }
 
-    }
+        }
 
         if($names[0] = $driverEndTime[0] )
         {
@@ -37,11 +37,9 @@ public function BuildReport()
                 'car' => $names[2],
                 'time' => date('i:s.v', $timeDiff));
             
-        }
+        }   
     }
     return $report;
-
-
 }
    
 
