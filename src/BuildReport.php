@@ -12,7 +12,6 @@ public function BuildReport()
     foreach(file('./data/abbreviations.txt') as $lineNames)
     {
         $names = explode('_', $lineNames);
-
         foreach(file('./data/end.log') as $lineEnd)
         {
             $driverEndTime = explode('_', $lineEnd);
@@ -23,8 +22,8 @@ public function BuildReport()
                 if($driverEndTime[0] == $driverStartTime[0])
              {   
                $startTimeMillisec = DateTimeImmutable::createFromFormat('H:i:s.u', $driverStartTime[1]);
-                $endTimeMillisec = DateTimeImmutable::createFromFormat('H:i:s.u', $driverEndTime[1]);
-                $timeDiff = $endTimeMillisec - $startTimeMillisec;
+               $endTimeMillisec = DateTimeImmutable::createFromFormat('H:i:s.u', $driverEndTime[1]);
+               $timeDiff = $endTimeMillisec - $startTimeMillisec;
              }
              }
 
@@ -32,16 +31,10 @@ public function BuildReport()
 
         if($names[0] = $driverEndTime[0] )
         {
-            $report[] = array(
-                'name' => $names[1],
-                'car' => $names[2],
-                'time' => date('i:s.v', $timeDiff));
-            
+            $report[] = array($names[1], trim($names[2]), date('i:s.v', $timeDiff));    
         }   
     }
     return $report;
 }
-   
-
-   
+     
 }
