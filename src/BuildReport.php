@@ -2,6 +2,7 @@
 
 namespace App;
 
+use DateTime;
 use DateTimeImmutable;
 
 class BuildReport
@@ -20,10 +21,18 @@ public function BuildReport()
             {
                 $driverStartTime = explode('_', $lineStart);
                 if($driverEndTime[0] == $driverStartTime[0])
-             {   
-               $startTimeMillisec = DateTimeImmutable::createFromFormat('H:i:s.u', $driverStartTime[1]);
-               $endTimeMillisec = DateTimeImmutable::createFromFormat('H:i:s.u', $driverEndTime[1]);
-               $timeDiff = $endTimeMillisec - $startTimeMillisec;
+             { 
+               $format = 'H:i:s.v';   
+
+            //    $startTime = new DateTime($driverStartTime[1]); вот так выдает одинаквый результат 53:12.46000
+            //    $endTime = new DateTime($driverEndTime[1]);
+
+            //    $startTime = DateTime::createFromFormat($format, $driverStartTime[1]); а вот так ошибку выдает PHP Fatal error:  Uncaught Error: Call to a member function diff() on bool
+            //    $endTime = DateTime::createFromFormat($format, $driverEndTime[1]);
+
+               $timeDiff = $endTime->diff($startTime);
+               $time = $timeDiff->format('%i:%s.%f');
+               
              }
              }
 
@@ -31,7 +40,7 @@ public function BuildReport()
 
         if($names[0] = $driverEndTime[0] )
         {
-            $report[] = array($names[1], trim($names[2]), date('i:s.v', $timeDiff));    
+            $report[] = array($names[1], trim($names[2]), $time);    
         }   
     }
     return $report;

@@ -1,8 +1,15 @@
 <?php
 
-use App\PrintReport;
 require __DIR__.'/vendor/autoload.php';
 
+use App\Command\Report;
+use App\PrintReport;
+use Symfony\Component\Console\Application;
 
-$printReport = new PrintReport;
-$printReport->PrintReport();
+// $application = new Application();
+// $application->add(new Report);
+
+// $application->run();
+
+$report = new PrintReport;
+$report->PrintReport();
