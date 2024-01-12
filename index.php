@@ -2,6 +2,7 @@
 
 require __DIR__.'/vendor/autoload.php';
 
+use App\BuildReport;
 use App\Command\Report;
 use App\PrintReport;
 use Symfony\Component\Console\Application;
@@ -11,5 +12,8 @@ use Symfony\Component\Console\Application;
 
 // $application->run();
 
-$report = new PrintReport;
-$report->PrintReport();
+// $report = new PrintReport;
+// $report->PrintReport();
+
+$report = new BuildReport;
+var_dump($report->BuildReport());
