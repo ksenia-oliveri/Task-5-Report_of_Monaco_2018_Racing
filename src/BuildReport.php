@@ -21,9 +21,9 @@ class BuildReport
                         $driverEnd = explode('_', $end);
                         if($driverStart[0] == $driverEnd[0])
                         {
-                            $startTime = DateTime::createFromFormat('H:i:s.v', trim($driverStart[1]));
-                            $endTime = DateTime::createFromFormat('H:i:s.v', trim($driverEnd[1]));
-                            $timeDiff = $endTime->diff($startTime)->format('%i:%s.%f');
+                            $startTime = DateTime::createFromFormat('H:i:s.u', trim($driverStart[1]));
+                            $endTime = DateTime::createFromFormat('H:i:s.u', trim($driverEnd[1]));
+                            $timeDiff = $endTime->diff($startTime)->format('%H:%i:%s.%f');
                         }
                         
                     }   
@@ -31,7 +31,10 @@ class BuildReport
                 
             }
            $report[] = [$names[1], trim($names[2]), $timeDiff];
-           
+           usort($report, function($a, $b)
+           {
+            return $a[2] > $b[2];
+           });   
         }
         return $report;
     }

@@ -7,13 +7,13 @@ use App\Command\Report;
 use App\PrintReport;
 use Symfony\Component\Console\Application;
 
-// $application = new Application();
-// $application->add(new Report);
+$application = new Application();
+$application->add(new Report);
 
-// $application->run();
+$application->run();
 
 // $report = new PrintReport;
 // $report->PrintReport();
 
-$report = new BuildReport;
-var_dump($report->BuildReport());
+// $report = new BuildReport;
+// var_dump($report->BuildReport());
