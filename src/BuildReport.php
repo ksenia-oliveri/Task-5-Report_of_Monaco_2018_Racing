@@ -24,11 +24,9 @@ class BuildReport
                             $startTime = DateTime::createFromFormat('H:i:s.u', trim($driverStart[1]));
                             $endTime = DateTime::createFromFormat('H:i:s.u', trim($driverEnd[1]));
                             $timeDiff = $endTime->diff($startTime)->format('%H:%i:%s.%f');
-                        }
-                        
+                        }    
                     }   
-                }
-                
+                }    
             }
            $report[] = [$names[1], trim($names[2]), $timeDiff];
            usort($report, function($a, $b)
